@@ -13,7 +13,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 public class ToDoItem {
+	
 	private String id;
+	
 	private String title;
 	private boolean done;
 }
