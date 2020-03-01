@@ -1,5 +1,7 @@
 package org.kidding.domain;
 
+import org.springframework.data.annotation.Id;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,8 +16,8 @@ import lombok.Setter;
 @Builder
 public class ToDoItem {
 	
+	@Id
 	private String id;
-	
 	private String title;
 	private boolean done;
 }

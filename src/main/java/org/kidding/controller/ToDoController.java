@@ -5,10 +5,12 @@ import java.util.List;
 
 import org.kidding.adapter.ToDoItemAdapter;
 import org.kidding.domain.ToDoItem;
-import org.kidding.response.ToDoItemResponse;
+import org.kidding.reqresp.ToDoItemRequest;
+import org.kidding.reqresp.ToDoItemResponse;
 import org.kidding.service.ToDoItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -38,6 +40,32 @@ public class ToDoController {
 		
 		//todo/{id}로 리퀘스트 보내면 service로 가서 get(id)를 수행. builder()로 빌드하고 id, title, done에는 정해진 정보를 넣음.
 		//TodoItemAdapter에서 toDoItemResponse 형태로 바꿔주겠지. 
+		return ToDoItemAdapter.toDoItemResponse(toDoItem, errors);
+	}
+	
+	@RequestMapping(method = RequestMethod.GET)
+	public @ResponseBody List<ToDoItemResponse> getAll(){
+		List<String> errors = new ArrayList<>();
+		List<ToDoItem> toDoItems = toDoItemService.getAll();
+		List<ToDoItemResponse> toDoItemResponses = new ArrayList<>();
+		toDoItems.stream().forEach(toDoItem -> {
+			toDoItemResponses.add(ToDoItemAdapter.toDoItemResponse(toDoItem,  errors));
+		});
+		
+		return toDoItemResponses;
+	}
+	
+	@RequestMapping(method = RequestMethod.POST)
+	public @ResponseBody ToDoItemResponse create(@RequestBody final ToDoItemRequest toDoItemRequest) {
+		List<String> errors = new ArrayList<>();
+		ToDoItem toDoItem = ToDoItemAdapter.toDoItem(toDoItemRequest);
+	
+		try {
+			toDoItem = toDoItemService.create(toDoItem);
+		}catch(final Exception e) {
+			errors.add(e.getMessage());
+			e.printStackTrace();
+		}
 		return ToDoItemAdapter.toDoItemResponse(toDoItem, errors);
 	}
 }

@@ -1,4 +1,4 @@
-package org.kidding.response;
+package org.kidding.reqresp;
 
 import java.util.List;
 
