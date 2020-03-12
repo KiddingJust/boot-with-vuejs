@@ -5,9 +5,21 @@ plugins {
 	id 'war'
 }
 
+apply plugin: 'java'
+apply plugin: 'application'
+mainClassName = 'org.kidding.ToDoProjectApplication'
+
+/*
+bootJar {
+    baseName = 'spring-boot-docker'
+    version =  '0.1.0'
+}
+*/
+
 group = 'org.kidding'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
+
 
 configurations {
 	developmentOnly
