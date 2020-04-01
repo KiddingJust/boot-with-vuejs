@@ -68,4 +68,22 @@ public class ToDoController {
 		}
 		return ToDoItemAdapter.toDoItemResponse(toDoItem, errors);
 	}
+	
+	//PUT이 아닌 POST의 경우 데이터가 있으면 update, 없으면 create 하게도 가능. 
+	@RequestMapping(method = RequestMethod.PUT)
+	public @ResponseBody ToDoItemResponse update(@RequestBody final ToDoItemRequest toDoItemRequest) {
+		List<String> errors = new ArrayList<>();
+		
+		//todoitemadapter를 통해 todoitemrequest를 todoitem으로 변
+		//update 시에는 id가 반드시 필요하므로 id를 제대로 adapt하는지 확인
+		//ToDoItemAdapter도 수정
+		ToDoItem toDoItem = ToDoItemAdapter.toDoItem(toDoItemRequest); 
+		try {
+			toDoItem = toDoItemService.update(toDoItem);
+		} catch (final Exception e) {
+			errors.add(e.getMessage());
+			e.printStackTrace();
+		}
+		return ToDoItemAdapter.toDoItemResponse(toDoItem, errors);
+	}
 }
