@@ -10,11 +10,16 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "3": "^2.1.0",
+    "-": "0.0.1",
+    "@livelybone/vue-datepicker": "^3.1.0",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "bootstrap-vue": "^2.8.0",
+    "jquery": "^1.9.1",
     "vue": "^2.6.11",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuejs-datepicker": "^1.6.2"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.5",

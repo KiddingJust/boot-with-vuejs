@@ -1,0 +1,20 @@
+version: "3"
+services:
+  mongodb:
+    image: mongo:3.2.4
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    volumes:
+      - ./data/db:/data/db
+    command: mongod --smallfiles --logpath=/dev/null # --quiet
+    container_name: "mongodb"
+    ports:
+    - 27017:27017
+    command: --smallfiles
+  app:
+    image: to-do-springboot # 우리가 Dockerfile에서 지정했던 app 이름
+    ports:
+    - 5000:5000
+    links:  # 이걸 해줘야 이 컨테이너(to-do-springboot)는 옆 컨테이너인 mongodb를 사용한다는 것을 명시 
+    - mongodb
