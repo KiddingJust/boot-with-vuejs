@@ -16,7 +16,7 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "bootstrap-vue": "^2.8.0",
-    "jquery": "^1.9.1",
+    "jquery": "^3.5.0",
     "vue": "^2.6.11",
     "vue-router": "^3.0.1",
     "vuejs-datepicker": "^1.6.2"
