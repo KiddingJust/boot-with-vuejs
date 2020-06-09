@@ -6,6 +6,7 @@
     <!-- 내려보낼 프롭스 속성 이름 = "현재 컴포넌트 데이터 속성" -->
     <TodoList v-bind:propsdata="todoItems" v-on:removeItem="removeOneItem" v-on:toggleItem="toggleOneItem"></TodoList>
     <TodoFooter v-on:clearAll="clearAllItems"></TodoFooter>
+    <Calendar>Calendar</Calendar>
   </div>
 </template>
 
@@ -15,6 +16,8 @@ import TodoHeader from './components/TodoHeader.vue'
 import TodoInput from './components/TodoInput.vue'
 import TodoList from './components/TodoList.vue'
 import TodoFooter from './components/TodoFooter.vue'
+import {Datepicker, Timepicker, DatetimePicker} from '@livelybone/vue-datepicker'
+
 
 //로컬 컴포넌트를 설정하는 경우에는
 //new Vue에서 components 속성에서 설정해주었음. 
@@ -76,6 +79,7 @@ export default {
     'TodoInput' : TodoInput,
     'TodoList' : TodoList,
     'TodoFooter' : TodoFooter,
+    'Calendar' : Datepicker
   }
 }
 

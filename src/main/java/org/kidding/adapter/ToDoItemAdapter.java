@@ -21,6 +21,7 @@ public class ToDoItemAdapter {
     		.id(toDoItemRequest.getId())	//id 체크. 
     		.title(toDoItemRequest.getTitle())
     		.done(toDoItemRequest.isDone())
+    		.todoDate(toDoItemRequest.getTodoDate())
     		.build();
     }
 }
